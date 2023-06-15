@@ -14,8 +14,8 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = "${release_version}"
-group = 'com.jetpacker06.fueltool'
+version = "${mod_version}"
+group = 'com.jetpacker06.modpackage'
 archivesBaseName = 'fueltool'
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
@@ -34,19 +34,21 @@ repositories {
 
 println('Java: ' + System.getProperty('java.version') + ' JVM: ' + System.getProperty('java.vm.version') + '(' + System.getProperty('java.vendor') + ') Arch: ' + System.getProperty('os.arch'))
 minecraft {
-    mappings channel: 'parchment', version: "${parchment_version}"
+    mappings channel: "${mappings_channel}", version: "${mappings_version}"
     runs {
         client {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
             property 'forge.enabledGameTestNamespaces', 'fueltool'
+
             mods {
                 fueltool {
                     source sourceSets.main
                 }
             }
         }
+
         server {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
@@ -69,6 +71,7 @@ minecraft {
                 }
             }
         }
+
         data {
             workingDirectory project.file('run')
             property 'forge.logging.markers', 'REGISTRIES'
@@ -82,7 +85,9 @@ minecraft {
         }
     }
 }
+
 sourceSets.main.resources { srcDir 'src/generated/resources' }
+
 repositories {
 }
 dependencies {
