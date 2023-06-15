@@ -14,7 +14,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
-@Mod("fueltool")
+@Mod(FuelTool.MOD_ID)
 public class FuelTool {
     public static final String MOD_ID = "fueltool";
     public static final Logger LOGGER = LogManager.getLogger();
