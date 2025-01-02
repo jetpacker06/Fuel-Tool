@@ -29,7 +29,7 @@ public class FuelTool {
             if (!listJson.exists()) {
                 listJson.createNewFile();
                 FileWriter writer = new FileWriter(listJson);
-                writer.write("{\n\"block.minecraft.grass_block\": 1600\n}");
+                writer.write("{\n   \"block.minecraft.coal\": 1600\n}");
                 writer.close();
                 log("Created custom_fuels.json");
             }
